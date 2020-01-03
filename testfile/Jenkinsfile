@@ -5,25 +5,27 @@ node {
       stage('validate') {
         bat label: 'validate', script: 'mvn validate'
     }
-    stage('build') {
-        bat label: 'build', script: 'mvn build'
+      stage('compile') {
+        bat label: 'compile', script: 'mvn compile'
     }
-    stage('test Stage')
-       steps{
-           withMaven(maven : 'maven_3_6_3') {
-                              bat "mvn test"
-                          }
+    stage('package') {
+        bat label: 'validate', script: 'mvn package'
     }
-    stage('install stage'){
+     stage('install stage'){
            steps {
-                withMaven(maven : 'maven_6_3_3') {
+                withMaven(maven : 'maven_3_6_3') {
                     bat 'mvn install'
                 }
             }
-     
-    }
+      
+    stage('verify Stage')
+       steps{
+           withMaven(maven : 'maven_3_6_3') {
+                              bat "mvn verify"
+                          }
+    
    
-
-
+        }
+    }
         
 }
