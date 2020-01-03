@@ -1,25 +1,25 @@
 node {
     stage ('clean'){
-         sh "./mvnw clean"
+         bat label: 'clean', script: 'mvn clean'
     }
       stage('validate') {
-        sh "chmod +x mvnw"
-        sh "./mvnw validate"
+        bat "chmod +x mvnw"
+        bat label: 'validate', script: 'mvn validate'
     }
     stage('build') {
-        sh "chmod +x mvnw"
-        sh "./mvnw build"
+        bat "chmod +x mvnw"
+        bat label: 'build', script: 'mvn build'
     }
     stage('test Stage')
        steps{
            withMaven(maven : 'maven_6_3_3') {
-                              sh "mvn test"
+                              bat "mvn test"
                           }
     }
     stage('install stage'){
            steps {
                 withMaven(maven : 'maven_6_3_3') {
-                    sh 'mvn install'
+                    bat 'mvn install'
                 }
             }
      
