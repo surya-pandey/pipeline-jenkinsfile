@@ -13,19 +13,13 @@ node {
     }
      stage('install stage'){
            steps {
-                withMaven(maven : 'maven_3_6_3') {
                     bat 'mvn install'
                 }
             }
       
     stage('verify Stage')
        steps{
-           withMaven(maven : 'maven_3_6_3') {
                               bat "mvn verify"
                           }
-    
-   
-        }
-    }
         
 }
