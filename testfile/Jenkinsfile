@@ -1,0 +1,31 @@
+node {
+    stage ('clean'){
+         sh "./mvnw clean"
+    }
+      stage('validate') {
+        sh "chmod +x mvnw"
+        sh "./mvnw validate"
+    }
+    stage('build') {
+        sh "chmod +x mvnw"
+        sh "./mvnw build"
+    }
+    stage('test Stage')
+       steps{
+           withMaven(maven : 'maven_6_3_3') {
+                              sh "mvn test"
+                          }
+    }
+    stage('install stage'){
+           steps {
+                withMaven(maven : 'maven_6_3_3') {
+                    sh 'mvn install'
+                }
+            }
+     
+    }
+   
+
+
+        
+}
