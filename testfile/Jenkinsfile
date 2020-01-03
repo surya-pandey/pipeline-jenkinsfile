@@ -19,8 +19,4 @@ node {
        {
                               bat "mvn verify"
                           }
-     stage('build stage'){
-           bat label: 'install', script: 'mvn build'
-            }
-      
 }
