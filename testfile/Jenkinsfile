@@ -12,7 +12,7 @@ node {
         bat label: 'validate', script: 'mvn package'
     }
      stage('install stage'){
-           sh label: '', script: 'mvn install'
+           bat label: 'install', script: 'mvn install'
             }
       
     stage('verify Stage')
