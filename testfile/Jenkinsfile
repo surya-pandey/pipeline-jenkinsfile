@@ -3,16 +3,14 @@ node {
          bat label: 'clean', script: 'mvn clean'
     }
       stage('validate') {
-        bat "chmod +x mvnw"
         bat label: 'validate', script: 'mvn validate'
     }
     stage('build') {
-        bat "chmod +x mvnw"
         bat label: 'build', script: 'mvn build'
     }
     stage('test Stage')
        steps{
-           withMaven(maven : 'maven_6_3_3') {
+           withMaven(maven : 'maven_3_6_3') {
                               bat "mvn test"
                           }
     }
